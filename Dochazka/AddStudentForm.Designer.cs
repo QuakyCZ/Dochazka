@@ -95,7 +95,6 @@ namespace Dochazka {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CloseBtn;
             this.ClientSize = new System.Drawing.Size(459, 280);
-            this.ControlBox = false;
             this.Controls.Add(this.studentImg);
             this.Controls.Add(this.CloseBtn);
             this.Controls.Add(this.label1);
