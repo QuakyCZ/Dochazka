@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Data.Entity;
-using System.Runtime.Serialization;
-
 
 
 namespace Dochazka.Utils.DatabaseEntities {
     
-    public class StudentEntity:DbContext {
+    public class StudentEntity {
         private Int64 Uuid { get; }
 
         private string Name { get; set; }
