@@ -21,8 +21,8 @@ namespace Dochazka.Utils
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<StudentEntity>().ToTable("Student");
-            modelBuilder.Entity<StudentEntity>(entity => {
+            modelBuilder.Entity<Student>().ToTable("Student");
+            modelBuilder.Entity<Student>(entity => {
                 entity.HasKey(e => e.Name);
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Id).ValueGeneratedOnAdd();
@@ -30,6 +30,6 @@ namespace Dochazka.Utils
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<StudentEntity> Students { get; set; }
+        public DbSet<Student> Students { get; set; }
     }
 }

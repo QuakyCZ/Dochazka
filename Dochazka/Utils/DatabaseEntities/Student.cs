@@ -8,12 +8,12 @@ using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
 
 namespace Dochazka.Utils.DatabaseEntities {
     [Table("Student")]
-    public class StudentEntity {
+    public class Student {
         public Int64 Id { get; set; }
 
         public string Name { get; set; }
-        public List<PresenceEntity> Presences { get; set; }
-        public bool Equals(StudentEntity other) {
+        public List<Presence> Presences { get; set; }
+        public bool Equals(Student other) {
             return Id==other.Id && Name == other.Name && Presences.Equals(other.Presences);
         }
     }

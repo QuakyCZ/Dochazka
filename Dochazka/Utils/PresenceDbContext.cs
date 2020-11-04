@@ -15,22 +15,21 @@ namespace Dochazka.Utils {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<PresenceEntity>().ToTable("Presence");
-            modelBuilder.Entity<PresenceEntity>(entity =>
+            modelBuilder.Entity<Presence>().ToTable("Presence");
+            modelBuilder.Entity<Presence>(entity =>
             {
                 entity.HasKey(e => e.Id);
+                entity.HasIndex(e => e.StudentId);
                 entity.Property(e => e.Id).ValueGeneratedOnAdd();
-                entity.Property(e => e.StudentId).IsRequired();
             });
 
-            modelBuilder.Entity<PresenceEntity>()
-                .HasOne(p => p.Student)
+            modelBuilder.Entity<Presence>()
+                .HasOne(p=>p.Student)
                 .WithMany(s => s.Presences)
-                .HasForeignKey(p => p.StudentId)
-                .HasPrincipalKey(s => s.Id);
+                .HasForeignKey(p => p.StudentId);
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<PresenceEntity> Presences { get; set; }
+        public DbSet<Presence> Presences { get; set; }
     }
 }

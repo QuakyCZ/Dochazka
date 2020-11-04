@@ -6,12 +6,12 @@ using Dochazka.Utils.DatabaseEntities;
 
 namespace Dochazka {
     public partial class WriteAbsenceForm : Form {
-        private StudentEntity _studentEntity;
+        private Student _student;
         private DateTime _dateTime;
         private Dictionary<string,PresenceType> presences = new Dictionary<string, PresenceType>();
-        public WriteAbsenceForm(StudentEntity studentEntity, DateTime dateTime) {
+        public WriteAbsenceForm(Student student, DateTime dateTime) {
             InitializeComponent();
-            _studentEntity = studentEntity;
+            _student = student;
             _dateTime = dateTime;
             presences.Add("Přítomen",PresenceType.Present);
             presences.Add("Nepřítomen",PresenceType.Absent);
@@ -19,19 +19,20 @@ namespace Dochazka {
             absenceTypeBox.Items.Add("Přítomen");
             absenceTypeBox.Items.Add("Nepřítomen");
             absenceTypeBox.Items.Add("Omluven");
-            studentsNameLabel.Text = studentEntity.Name;
+            studentsNameLabel.Text = student.Name;
             
         }
 
         private void saveBtn_Click(object sender, EventArgs e) {
-            PresenceEntity presenceEntity = new PresenceEntity();
-            presenceEntity.Student = _studentEntity;
-            presenceEntity.Date = _dateTime.ToShortDateString();
+            Presence presence = new Presence();
+            presence.Student = _student;
+            presence.StudentId = _student.Id;
+            presence.Date = _dateTime.ToShortDateString();
             if (presences.ContainsKey(absenceTypeBox.SelectedItem.ToString())) {
-                presenceEntity.Type = presences[absenceTypeBox.SelectedItem.ToString()];
+                presence.Type = presences[absenceTypeBox.SelectedItem.ToString()];
                 try {
                     using (PresenceDbContext db = new PresenceDbContext()) {
-                        db.Add(presenceEntity);
+                        db.Add(presence);
                         db.SaveChanges();
                     }
                 }

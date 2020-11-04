@@ -8,12 +8,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dochazka {
     public partial class Form1 : Form {
-        public delegate void OnStudentAdded(StudentEntity studentEntity);
-        public delegate void OnStudentRemoved(StudentEntity studentEntity);
+        public delegate void OnStudentAdded(Student student);
+        public delegate void OnStudentRemoved(Student student);
         public OnStudentAdded OnStudentAddedAction;
         public OnStudentRemoved OnStudentRemovedAction;
 
-        private Dictionary<StudentEntity, ListViewItem> studentsInListView = new Dictionary<StudentEntity, ListViewItem>();
+        private Dictionary<Student, ListViewItem> studentsInListView = new Dictionary<Student, ListViewItem>();
 
         public Form1() {
             InitializeComponent();
@@ -46,7 +46,7 @@ namespace Dochazka {
             studentsInListView.Clear();
             using (StudentDbContext db = new StudentDbContext())
             {
-                DbSet<StudentEntity> students = db.Students;
+                DbSet<Student> students = db.Students;
                 foreach (var student in students) {
                     studentsInListView.Add(student,studentsList.Items.Add(student.Name));
                 }
@@ -56,16 +56,16 @@ namespace Dochazka {
         private void studentsList_MouseDoubleClick(object sender, MouseEventArgs e) {
 
             ListViewItem studentItem = studentsList.FocusedItem;
-            StudentEntity studentEntity = null;
-            foreach (StudentEntity student in studentsInListView.Keys) {
+            Student newStudent = null;
+            foreach (Student student in studentsInListView.Keys) {
                 if (student.Name == studentItem.Text) {
-                    studentEntity = student;
+                    newStudent = student;
                     break;
                 }
             }
 
-            if (studentEntity != null) {
-                WriteAbsenceForm writeAbsenceForm = new WriteAbsenceForm(studentEntity,dateTimePicker.Value);
+            if (newStudent != null) {
+                WriteAbsenceForm writeAbsenceForm = new WriteAbsenceForm(newStudent, dateTimePicker.Value);
                 writeAbsenceForm.ShowDialog();
             }
             
@@ -123,13 +123,13 @@ namespace Dochazka {
         /// ////////////////////////////////// 
         
         
-        private void OnStudentAddedCallback(StudentEntity studentEntity) {
-            studentsInListView.Add(studentEntity,studentsList.Items.Add(studentEntity.Name));
+        private void OnStudentAddedCallback(Student student) {
+            studentsInListView.Add(student,studentsList.Items.Add(student.Name));
         }
 
-        private void OnStudentRemovedCallback(StudentEntity studentEntity) {
-            if (studentsInListView.ContainsKey(studentEntity)) {
-                studentsList.Items.Remove(studentsInListView[studentEntity]);
+        private void OnStudentRemovedCallback(Student student) {
+            if (studentsInListView.ContainsKey(student)) {
+                studentsList.Items.Remove(studentsInListView[student]);
             }
         }
         #endregion
