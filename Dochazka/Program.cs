@@ -11,6 +11,8 @@ using Dochazka.Utils;
 
 namespace Dochazka {
     static class Program {
+        public static string DBPATH = "dochazka.db";
+        public static string DBPATH_BACKUP = "dochazka_backup.db";
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>

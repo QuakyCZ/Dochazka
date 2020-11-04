@@ -13,7 +13,7 @@ namespace Dochazka.Utils
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //Assembly.GetExecutingAssembly().Location
-            optionsBuilder.UseSqlite("Filename=dochazka.db", options =>
+            optionsBuilder.UseSqlite("Filename="+Program.DBPATH, options =>
             {
                 options.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
             });
