@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dochazka.Utils.DatabaseEntities {
     public class StudentEntity {
-        public Int64 Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
         
