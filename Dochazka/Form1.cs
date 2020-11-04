@@ -20,10 +20,15 @@ namespace Dochazka {
 
         private void UpdateStudents() {
             studentsList.Items.Clear();
-            DbSet<StudentEntity> students = new StudentDbContext().Students;
-            foreach (var student in students) {
-                studentsList.Items.Add(student.Name);
+            using (StudentDbContext db = new StudentDbContext())
+            {
+                DbSet<StudentEntity> students = db.Students;
+                foreach (var student in students)
+                {
+                    studentsList.Items.Add(student.Name);
+                }
             }
+
         }
 
         private void ExportDataButtonClick(object sender, EventArgs e) {
@@ -48,9 +53,8 @@ namespace Dochazka {
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Filter = "SQLite database files (*.db)|*.db";
                 if (dialog.ShowDialog() == DialogResult.OK) {
-                    File.Copy(dialog.SafeFileName, Program.DBPATH, true);
+                    File.Copy(dialog.FileName, Program.DBPATH, true);
                 }
-
                 UpdateStudents();
             }
             catch(Exception exception) {
