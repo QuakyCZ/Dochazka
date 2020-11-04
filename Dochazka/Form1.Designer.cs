@@ -26,6 +26,7 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.AddStudentBtn = new System.Windows.Forms.Button();
+            this.studentsList = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // AddStudentBtn
@@ -44,11 +45,20 @@
             this.AddStudentBtn.UseVisualStyleBackColor = false;
             this.AddStudentBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.AddStudentBtn_MouseClick);
             // 
+            // studentsList
+            // 
+            this.studentsList.Location = new System.Drawing.Point(13, 9);
+            this.studentsList.Name = "studentsList";
+            this.studentsList.Size = new System.Drawing.Size(560, 369);
+            this.studentsList.TabIndex = 1;
+            this.studentsList.UseCompatibleStateImageBehavior = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 390);
+            this.Controls.Add(this.studentsList);
             this.Controls.Add(this.AddStudentBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
@@ -56,6 +66,8 @@
             this.Text = "Dochazka";
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.ListView studentsList;
 
         private System.Windows.Forms.Button AddStudentBtn;
 

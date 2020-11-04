@@ -19,6 +19,10 @@ namespace Dochazka {
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            using (StudentDbContext db = new StudentDbContext()) {
+                db.Database.EnsureCreated();
+                db.SaveChanges();
+            }
             Application.Run(new Form1());
         }
     }

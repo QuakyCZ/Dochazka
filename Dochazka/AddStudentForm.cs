@@ -17,7 +17,6 @@ namespace Dochazka {
             try {
                 using (StudentDbContext db = new StudentDbContext())
                 {
-                    db.Database.EnsureCreated();
                     db.Students.Add(student);
                     db.SaveChanges();
                 }
