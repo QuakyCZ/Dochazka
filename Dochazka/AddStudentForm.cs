@@ -13,11 +13,14 @@ namespace Dochazka {
         private void AddBtn_Click(object sender, EventArgs e) {
             
             StudentEntity student = new StudentEntity();
-            student.SetName(textBox1.Text);
-            var table = new StudentsTable();
+            student.Name = textBox1.Text;
             try {
-                table.Add(student);
-                table.SaveChanges();
+                using (StudentDbContext db = new StudentDbContext())
+                {
+                    db.Database.EnsureCreated();
+                    db.Students.Add(student);
+                    db.SaveChanges();
+                }
             }
             catch (Exception exception) {
                 Console.WriteLine(exception);
