@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using Dochazka.Utils;
@@ -12,29 +13,59 @@ namespace Dochazka {
         public OnStudentAdded OnStudentAddedAction;
         public OnStudentRemoved OnStudentRemovedAction;
 
+        private Dictionary<StudentEntity, ListViewItem> studentsInListView = new Dictionary<StudentEntity, ListViewItem>();
+
         public Form1() {
             InitializeComponent();
-            OnStudentAddedAction += OnStudentAddedCallback; 
+            OnStudentAddedAction += OnStudentAddedCallback;
+            OnStudentRemovedAction += OnStudentRemovedCallback;
             UpdateStudents();
         }
 
+        #region FORM INTERACTIONS
+
+        //////////////////////////////
+        ///
+        ///    FORM INTERACTIONS
+        ///
+        //////////////////////////////
+
+        
         private void AddStudentBtn_MouseClick(object sender, MouseEventArgs e) {
             AddStudentForm newStudentForm = new AddStudentForm();
             newStudentForm.ShowDialog();
             OnStudentAddedAction.Invoke(newStudentForm.NewStudent);
         }
 
+        private void RemoveStudentBtn_MouseClick(object sender, MouseEventArgs e) {
+            throw new NotImplementedException("RemoveStudentBtn_MouseClick not implemented");
+        }
+
         private void UpdateStudents() {
             studentsList.Items.Clear();
+            studentsInListView.Clear();
             using (StudentDbContext db = new StudentDbContext())
             {
                 DbSet<StudentEntity> students = db.Students;
                 foreach (var student in students) {
-                    studentsList.Items.Add(student.Name);
+                    studentsInListView.Add(student,studentsList.Items.Add(student.Name));
                 }
             }
         }
+        
+        #endregion
 
+        #region MENU BUTTONS
+
+        
+
+        
+        //////////////////////////////
+        ///
+        /// MENU BUTTONS
+        ///
+        /// //////////////////////////
+        
         private void ExportDataButtonClick(object sender, EventArgs e) {
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.Filter = "SQLite database files (*.db)|*.db";
@@ -65,9 +96,25 @@ namespace Dochazka {
                 MessageBox.Show("Při importu došlo k problému.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
 
+        #region CALLBACKS
+        //////////////////////////////////////
+        ///
+        ///  CALLBACKS
+        ///
+        /// ////////////////////////////////// 
+        
+        
         private void OnStudentAddedCallback(StudentEntity studentEntity) {
-            studentsList.Items.Add(studentEntity.Name);
+            studentsInListView.Add(studentEntity,studentsList.Items.Add(studentEntity.Name));
         }
+
+        private void OnStudentRemovedCallback(StudentEntity studentEntity) {
+            if (studentsInListView.ContainsKey(studentEntity)) {
+                studentsList.Items.Remove(studentsInListView[studentEntity]);
+            }
+        }
+        #endregion
     }
 }
