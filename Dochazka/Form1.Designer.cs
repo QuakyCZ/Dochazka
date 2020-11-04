@@ -58,6 +58,8 @@
             // 
             // studentsList
             // 
+            this.studentsList.FullRowSelect = true;
+            this.studentsList.GridLines = true;
             this.studentsList.HideSelection = false;
             this.studentsList.Location = new System.Drawing.Point(26, 84);
             this.studentsList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -65,6 +67,7 @@
             this.studentsList.Size = new System.Drawing.Size(653, 335);
             this.studentsList.TabIndex = 1;
             this.studentsList.UseCompatibleStateImageBehavior = false;
+            this.studentsList.View = System.Windows.Forms.View.Details;
             this.studentsList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.studentsList_MouseDoubleClick);
             // 
             // menuStrip1

@@ -19,6 +19,7 @@ namespace Dochazka {
             InitializeComponent();
             OnStudentAddedAction += OnStudentAddedCallback;
             OnStudentRemovedAction += OnStudentRemovedCallback;
+            InitStudentsList();
             UpdateStudents();
         }
 
@@ -51,6 +52,13 @@ namespace Dochazka {
                     studentsInListView.Add(student,studentsList.Items.Add(student.Name));
                 }
             }
+        }
+
+        private void InitStudentsList()
+        {
+            studentsList.Sorting = SortOrder.Ascending;
+            studentsList.Columns.Add("Jméno",200);
+            studentsList.Columns.Add("Absence", 100);
         }
         
         private void studentsList_MouseDoubleClick(object sender, MouseEventArgs e) {
