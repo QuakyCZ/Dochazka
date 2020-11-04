@@ -7,15 +7,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dochazka {
     public partial class Form1 : Form {
+        public delegate void OnStudentAdded(StudentEntity studentEntity);
+        public delegate void OnStudentRemoved(StudentEntity studentEntity);
+        public OnStudentAdded OnStudentAddedAction;
+        public OnStudentRemoved OnStudentRemovedAction;
+
         public Form1() {
             InitializeComponent();
+            OnStudentAddedAction += OnStudentAddedCallback; 
             UpdateStudents();
         }
 
         private void AddStudentBtn_MouseClick(object sender, MouseEventArgs e) {
             AddStudentForm newStudentForm = new AddStudentForm();
             newStudentForm.ShowDialog();
-            UpdateStudents();
+            OnStudentAddedAction.Invoke(newStudentForm.NewStudent);
         }
 
         private void UpdateStudents() {
@@ -23,12 +29,10 @@ namespace Dochazka {
             using (StudentDbContext db = new StudentDbContext())
             {
                 DbSet<StudentEntity> students = db.Students;
-                foreach (var student in students)
-                {
+                foreach (var student in students) {
                     studentsList.Items.Add(student.Name);
                 }
             }
-
         }
 
         private void ExportDataButtonClick(object sender, EventArgs e) {
@@ -40,7 +44,6 @@ namespace Dochazka {
                 File.Copy(Program.DBPATH, dialog.FileName);
             }
         }
-
         private void importDataBtn_Click(object sender, EventArgs e) {
             if (MessageBox.Show(
                 "Stávající data budou smazána a nahrazena novými. Přejete si pokračovat?",
@@ -61,6 +64,10 @@ namespace Dochazka {
                 Console.WriteLine(exception);
                 MessageBox.Show("Při importu došlo k problému.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void OnStudentAddedCallback(StudentEntity studentEntity) {
+            studentsList.Items.Add(studentEntity.Name);
         }
     }
 }

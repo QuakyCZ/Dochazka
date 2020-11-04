@@ -5,6 +5,7 @@ using Dochazka.Utils.DatabaseEntities;
 
 namespace Dochazka {
     public partial class AddStudentForm : Form {
+        public StudentEntity NewStudent { get; private set; }
         public AddStudentForm() {
             InitializeComponent();
             AddBtn.Enabled = false;
@@ -12,12 +13,12 @@ namespace Dochazka {
         
         private void AddBtn_Click(object sender, EventArgs e) {
             
-            StudentEntity student = new StudentEntity();
-            student.Name = textBox1.Text;
+            NewStudent = new StudentEntity();
+            NewStudent.Name = textBox1.Text;
             try {
                 using (StudentDbContext db = new StudentDbContext())
                 {
-                    db.Students.Add(student);
+                    db.Students.Add(NewStudent);
                     db.SaveChanges();
                 }
             }
