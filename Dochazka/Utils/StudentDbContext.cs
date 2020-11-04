@@ -12,7 +12,6 @@ namespace Dochazka.Utils
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //Assembly.GetExecutingAssembly().Location
             optionsBuilder.UseSqlite("Filename="+Program.DBPATH, options =>
             {
                 options.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
@@ -22,14 +21,26 @@ namespace Dochazka.Utils
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Student>().ToTable("Student");
+            modelBuilder.Entity<Presence>().ToTable("Presence");
             modelBuilder.Entity<Student>(entity => {
                 entity.HasKey(e => e.Name);
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Id).ValueGeneratedOnAdd();
             });
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Presence>(entity => {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+            });
+            modelBuilder.Entity<Presence>()
+                .HasOne(s => s.Student)
+                .WithMany(p => p.Presences);
+            modelBuilder.Entity<Student>()
+                .HasMany(p => p.Presences)
+                .WithOne(s => s.Student);
+           base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Student> Students { get; set; }
+        public DbSet<Presence> Presences { get; set; }
     }
 }

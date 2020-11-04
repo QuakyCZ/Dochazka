@@ -34,11 +34,13 @@ namespace Dochazka {
             // 
             // studentsNameLabel
             // 
-            this.studentsNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.studentsNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (238)));
-            this.studentsNameLabel.Location = new System.Drawing.Point(80, 9);
+            this.studentsNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.studentsNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.studentsNameLabel.Location = new System.Drawing.Point(93, 10);
+            this.studentsNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.studentsNameLabel.Name = "studentsNameLabel";
-            this.studentsNameLabel.Size = new System.Drawing.Size(209, 49);
+            this.studentsNameLabel.Size = new System.Drawing.Size(244, 57);
             this.studentsNameLabel.TabIndex = 0;
             this.studentsNameLabel.Text = "Jmeno Studenta";
             this.studentsNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -51,20 +53,23 @@ namespace Dochazka {
             // 
             // absenceTypeBox
             // 
-            this.absenceTypeBox.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.absenceTypeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.absenceTypeBox.FormattingEnabled = true;
-            this.absenceTypeBox.Location = new System.Drawing.Point(107, 98);
+            this.absenceTypeBox.Location = new System.Drawing.Point(125, 113);
+            this.absenceTypeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.absenceTypeBox.Name = "absenceTypeBox";
-            this.absenceTypeBox.Size = new System.Drawing.Size(163, 21);
+            this.absenceTypeBox.Size = new System.Drawing.Size(190, 23);
             this.absenceTypeBox.TabIndex = 2;
             this.absenceTypeBox.Text = "Typ absence";
             // 
             // saveBtn
             // 
             this.saveBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.saveBtn.Location = new System.Drawing.Point(80, 160);
+            this.saveBtn.Location = new System.Drawing.Point(93, 185);
+            this.saveBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(209, 49);
+            this.saveBtn.Size = new System.Drawing.Size(244, 57);
             this.saveBtn.TabIndex = 3;
             this.saveBtn.Text = "Uložit";
             this.saveBtn.UseVisualStyleBackColor = true;
@@ -72,16 +77,18 @@ namespace Dochazka {
             // 
             // WriteAbsenceForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 256);
+            this.ClientSize = new System.Drawing.Size(443, 295);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.absenceTypeBox);
             this.Controls.Add(this.studentsNameLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "WriteAbsenceForm";
             this.Text = "Zápis Absence";
             this.ResumeLayout(false);
+
         }
 
         private System.Windows.Forms.Button saveBtn;

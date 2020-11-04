@@ -26,13 +26,13 @@ namespace Dochazka {
         private void saveBtn_Click(object sender, EventArgs e) {
             Presence presence = new Presence();
             presence.Student = _student;
-            presence.StudentId = _student.Id;
             presence.Date = _dateTime.ToShortDateString();
             if (presences.ContainsKey(absenceTypeBox.SelectedItem.ToString())) {
                 presence.Type = presences[absenceTypeBox.SelectedItem.ToString()];
                 try {
-                    using (PresenceDbContext db = new PresenceDbContext()) {
-                        db.Add(presence);
+                    using (StudentDbContext db = new StudentDbContext()) {
+                        db.Attach(_student);
+                        db.Presences.Add(presence);
                         db.SaveChanges();
                     }
                 }
