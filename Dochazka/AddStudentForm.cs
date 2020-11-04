@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Dochazka.Utils;
 using Dochazka.Utils.DatabaseEntities;
 
 namespace Dochazka {
@@ -13,6 +14,17 @@ namespace Dochazka {
             
             StudentEntity student = new StudentEntity();
             student.SetName(textBox1.Text);
+            var table = new StudentsTable();
+            try {
+                table.Add(student);
+                table.SaveChanges();
+            }
+            catch (Exception exception) {
+                Console.WriteLine(exception);
+                MessageBox.Show( "Nastala chyba databaze.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+
+            Close();
         }
         
         private void CloseBtn_Click(object sender, EventArgs e) {
