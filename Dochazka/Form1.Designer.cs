@@ -31,6 +31,10 @@
             this.souborToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportDataButton = new System.Windows.Forms.ToolStripMenuItem();
             this.importDataBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.nápovědaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.referenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nahlásitChybuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.návodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +56,7 @@
             // 
             // studentsList
             // 
-            this.studentsList.Location = new System.Drawing.Point(13, 41);
+            this.studentsList.Location = new System.Drawing.Point(22, 27);
             this.studentsList.Name = "studentsList";
             this.studentsList.Size = new System.Drawing.Size(560, 337);
             this.studentsList.TabIndex = 1;
@@ -60,9 +64,10 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.souborToolStripMenuItem});
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.souborToolStripMenuItem, this.nápovědaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menuStrip1.Size = new System.Drawing.Size(686, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
@@ -90,6 +95,31 @@
             this.importDataBtn.Text = "Importovat Data";
             this.importDataBtn.Click += new System.EventHandler(this.importDataBtn_Click);
             // 
+            // nápovědaToolStripMenuItem
+            // 
+            this.nápovědaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.návodToolStripMenuItem, this.referenceToolStripMenuItem, this.nahlásitChybuToolStripMenuItem});
+            this.nápovědaToolStripMenuItem.Name = "nápovědaToolStripMenuItem";
+            this.nápovědaToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.nápovědaToolStripMenuItem.Text = "Nápověda";
+            // 
+            // referenceToolStripMenuItem
+            // 
+            this.referenceToolStripMenuItem.Name = "referenceToolStripMenuItem";
+            this.referenceToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.referenceToolStripMenuItem.Text = "Reference";
+            // 
+            // nahlásitChybuToolStripMenuItem
+            // 
+            this.nahlásitChybuToolStripMenuItem.Name = "nahlásitChybuToolStripMenuItem";
+            this.nahlásitChybuToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.nahlásitChybuToolStripMenuItem.Text = "Nahlásit chybu";
+            // 
+            // návodToolStripMenuItem
+            // 
+            this.návodToolStripMenuItem.Name = "návodToolStripMenuItem";
+            this.návodToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.návodToolStripMenuItem.Text = "Návod";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -108,6 +138,11 @@
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.ToolStripMenuItem nahlásitChybuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nápovědaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem návodToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem referenceToolStripMenuItem;
 
         private System.Windows.Forms.ToolStripMenuItem importDataBtn;
 
