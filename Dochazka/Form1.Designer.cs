@@ -32,9 +32,10 @@
             this.exportDataButton = new System.Windows.Forms.ToolStripMenuItem();
             this.importDataBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.nápovědaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.návodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.referenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nahlásitChybuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.návodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,11 +57,12 @@
             // 
             // studentsList
             // 
-            this.studentsList.Location = new System.Drawing.Point(22, 27);
+            this.studentsList.Location = new System.Drawing.Point(22, 73);
             this.studentsList.Name = "studentsList";
-            this.studentsList.Size = new System.Drawing.Size(560, 337);
+            this.studentsList.Size = new System.Drawing.Size(560, 291);
             this.studentsList.TabIndex = 1;
             this.studentsList.UseCompatibleStateImageBehavior = false;
+            this.studentsList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.studentsList_MouseDoubleClick);
             // 
             // menuStrip1
             // 
@@ -102,6 +104,12 @@
             this.nápovědaToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.nápovědaToolStripMenuItem.Text = "Nápověda";
             // 
+            // návodToolStripMenuItem
+            // 
+            this.návodToolStripMenuItem.Name = "návodToolStripMenuItem";
+            this.návodToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.návodToolStripMenuItem.Text = "Návod";
+            // 
             // referenceToolStripMenuItem
             // 
             this.referenceToolStripMenuItem.Name = "referenceToolStripMenuItem";
@@ -114,17 +122,19 @@
             this.nahlásitChybuToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.nahlásitChybuToolStripMenuItem.Text = "Nahlásit chybu";
             // 
-            // návodToolStripMenuItem
+            // dateTimePicker
             // 
-            this.návodToolStripMenuItem.Name = "návodToolStripMenuItem";
-            this.návodToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.návodToolStripMenuItem.Text = "Návod";
+            this.dateTimePicker.Location = new System.Drawing.Point(22, 41);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(160, 20);
+            this.dateTimePicker.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 390);
+            this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.studentsList);
             this.Controls.Add(this.AddStudentBtn);
             this.Controls.Add(this.menuStrip1);
@@ -138,6 +148,8 @@
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
 
         private System.Windows.Forms.ToolStripMenuItem nahlásitChybuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nápovědaToolStripMenuItem;

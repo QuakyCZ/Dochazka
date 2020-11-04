@@ -53,6 +53,23 @@ namespace Dochazka {
             }
         }
         
+        private void studentsList_MouseDoubleClick(object sender, MouseEventArgs e) {
+
+            ListViewItem studentItem = studentsList.FocusedItem;
+            StudentEntity studentEntity = null;
+            foreach (StudentEntity student in studentsInListView.Keys) {
+                if (student.Name == studentItem.Text) {
+                    studentEntity = student;
+                    break;
+                }
+            }
+
+            if (studentEntity != null) {
+                WriteAbsenceForm writeAbsenceForm = new WriteAbsenceForm(studentEntity,dateTimePicker.Value);
+                writeAbsenceForm.ShowDialog();
+            }
+            
+        }
         #endregion
 
         #region MENU BUTTONS
@@ -116,5 +133,7 @@ namespace Dochazka {
             }
         }
         #endregion
+
+        
     }
 }

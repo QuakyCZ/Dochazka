@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Reflection;
 using Dochazka.Utils.DatabaseEntities;
+using Microsoft.EntityFrameworkCore;
 
-namespace Dochazka.Utils
-{
-    class StudentDbContext : DbContext
-    {
+namespace Dochazka.Utils {
+    public class PresenceDbContext:DbContext {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //Assembly.GetExecutingAssembly().Location
@@ -21,15 +15,22 @@ namespace Dochazka.Utils
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<StudentEntity>().ToTable("Student");
-            modelBuilder.Entity<StudentEntity>(entity => {
-                entity.HasKey(e => e.Name);
+            modelBuilder.Entity<PresenceEntity>().ToTable("Presence");
+            modelBuilder.Entity<PresenceEntity>(entity =>
+            {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Id).ValueGeneratedOnAdd();
+                entity.Property(e => e.StudentId).IsRequired();
             });
+
+            modelBuilder.Entity<PresenceEntity>()
+                .HasOne(p => p.Student)
+                .WithMany(s => s.Presences)
+                .HasForeignKey(p => p.StudentId)
+                .HasPrincipalKey(s => s.Id);
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<StudentEntity> Students { get; set; }
+        public DbSet<PresenceEntity> Presences { get; set; }
     }
 }
