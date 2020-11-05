@@ -37,7 +37,7 @@ namespace Dochazka.Utils
             modelBuilder.Entity<Student>()
                 .HasMany(p => p.Presences)
                 .WithOne(s => s.Student);
-           base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Student> Students { get; set; }

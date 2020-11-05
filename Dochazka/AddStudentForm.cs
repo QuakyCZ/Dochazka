@@ -8,6 +8,8 @@ namespace Dochazka {
         public Student NewStudent { get; private set; }
         public AddStudentForm() {
             InitializeComponent();
+            AddBtn.DialogResult = DialogResult.OK;
+            CloseBtn.DialogResult = DialogResult.Cancel;
             AddBtn.Enabled = false;
         }
         
@@ -21,16 +23,18 @@ namespace Dochazka {
                     db.Students.Add(NewStudent);
                     db.SaveChanges();
                 }
+                DialogResult = DialogResult.OK;
             }
             catch (Exception exception) {
                 Console.WriteLine(exception);
                 MessageBox.Show( "Nastala chyba databaze.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
-
+            
             Close();
         }
         
         private void CloseBtn_Click(object sender, EventArgs e) {
+            DialogResult = DialogResult.Cancel;
             Close();
         }
 

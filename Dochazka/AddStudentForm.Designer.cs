@@ -91,10 +91,8 @@ namespace Dochazka {
             // 
             // AddStudentForm
             // 
-            this.AcceptButton = this.AddBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.CloseBtn;
             this.ClientSize = new System.Drawing.Size(459, 280);
             this.Controls.Add(this.studentImg);
             this.Controls.Add(this.CloseBtn);

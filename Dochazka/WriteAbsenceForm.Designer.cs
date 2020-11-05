@@ -30,17 +30,16 @@ namespace Dochazka {
             this.toolStripDropDown1 = new System.Windows.Forms.ToolStripDropDown();
             this.absenceTypeBox = new System.Windows.Forms.ComboBox();
             this.saveBtn = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // studentsNameLabel
             // 
-            this.studentsNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.studentsNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.studentsNameLabel.Location = new System.Drawing.Point(93, 10);
-            this.studentsNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.studentsNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.studentsNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.studentsNameLabel.Location = new System.Drawing.Point(80, 9);
             this.studentsNameLabel.Name = "studentsNameLabel";
-            this.studentsNameLabel.Size = new System.Drawing.Size(244, 57);
+            this.studentsNameLabel.Size = new System.Drawing.Size(209, 49);
             this.studentsNameLabel.TabIndex = 0;
             this.studentsNameLabel.Text = "Jmeno Studenta";
             this.studentsNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -53,42 +52,48 @@ namespace Dochazka {
             // 
             // absenceTypeBox
             // 
-            this.absenceTypeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.absenceTypeBox.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.absenceTypeBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.absenceTypeBox.FormattingEnabled = true;
-            this.absenceTypeBox.Location = new System.Drawing.Point(125, 113);
-            this.absenceTypeBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.absenceTypeBox.Location = new System.Drawing.Point(97, 123);
             this.absenceTypeBox.Name = "absenceTypeBox";
-            this.absenceTypeBox.Size = new System.Drawing.Size(190, 23);
+            this.absenceTypeBox.Size = new System.Drawing.Size(172, 21);
             this.absenceTypeBox.TabIndex = 2;
-            this.absenceTypeBox.Text = "Typ absence";
             // 
             // saveBtn
             // 
             this.saveBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.saveBtn.Location = new System.Drawing.Point(93, 185);
-            this.saveBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.saveBtn.Location = new System.Drawing.Point(80, 160);
             this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(244, 57);
+            this.saveBtn.Size = new System.Drawing.Size(209, 49);
             this.saveBtn.TabIndex = 3;
             this.saveBtn.Text = "Uložit";
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(97, 75);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(172, 20);
+            this.dateTimePicker1.TabIndex = 4;
+            // 
             // WriteAbsenceForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(443, 295);
+            this.ClientSize = new System.Drawing.Size(380, 256);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.absenceTypeBox);
             this.Controls.Add(this.studentsNameLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "WriteAbsenceForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Zápis Absence";
             this.ResumeLayout(false);
-
         }
 
         private System.Windows.Forms.Button saveBtn;
@@ -98,5 +103,7 @@ namespace Dochazka {
         private System.Windows.Forms.ToolStripDropDown toolStripDropDown1;
 
         #endregion
+
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
