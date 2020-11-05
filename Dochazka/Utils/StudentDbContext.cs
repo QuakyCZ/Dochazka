@@ -4,6 +4,8 @@ using System.Reflection;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
+using System.Windows.Forms;
 using Dochazka.Utils.DatabaseEntities;
 
 namespace Dochazka.Utils

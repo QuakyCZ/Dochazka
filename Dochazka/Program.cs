@@ -11,7 +11,9 @@ using Dochazka.Utils;
 
 namespace Dochazka {
     static class Program {
-        public static string DBPATH = "dochazka.db";
+        public static string DBROOTFOLDER =
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Dochazka");
+        public static string DBPATH = Path.Combine(DBROOTFOLDER,"dochazka.db");
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -20,6 +22,9 @@ namespace Dochazka {
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            if (Directory.Exists(DBROOTFOLDER) == false) {
+                Directory.CreateDirectory(DBROOTFOLDER);
+            }
             using (StudentDbContext db = new StudentDbContext()) {
                 db.Database.EnsureCreated();
                 db.SaveChanges();
