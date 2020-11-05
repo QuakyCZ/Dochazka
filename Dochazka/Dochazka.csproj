@@ -14,11 +14,18 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="AddStudentForm.cs">
+      <Compile Update="Forms\AddStudentForm.cs">
         <SubType>Form</SubType>
       </Compile>
-      <Compile Update="WriteAbsenceForm.cs">
+      <Compile Update="Forms\WriteAbsenceForm.cs">
         <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Forms\AbsencesForm.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Forms\AbsencesForm.Buttons.cs">
+        <SubType>Component</SubType>
+        <DependentUpon>AbsencesForm.cs</DependentUpon>
       </Compile>
     </ItemGroup>
 

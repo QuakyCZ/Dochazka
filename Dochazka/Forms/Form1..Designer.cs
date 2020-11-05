@@ -31,6 +31,8 @@
             this.souborToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportDataButton = new System.Windows.Forms.ToolStripMenuItem();
             this.importDataBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.zobrazitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.neomluvenouAbsenciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nápovědaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.návodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.referenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +61,7 @@
             // 
             this.studentsList.FullRowSelect = true;
             this.studentsList.GridLines = true;
+            this.studentsList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.studentsList.HideSelection = false;
             this.studentsList.Location = new System.Drawing.Point(22, 41);
             this.studentsList.Name = "studentsList";
@@ -70,7 +73,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.souborToolStripMenuItem, this.nápovědaToolStripMenuItem});
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.souborToolStripMenuItem, this.zobrazitToolStripMenuItem, this.nápovědaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -99,7 +102,21 @@
             this.importDataBtn.Name = "importDataBtn";
             this.importDataBtn.Size = new System.Drawing.Size(160, 22);
             this.importDataBtn.Text = "Importovat Data";
-            this.importDataBtn.Click += new System.EventHandler(this.importDataBtn_Click);
+            this.importDataBtn.Click += new System.EventHandler(this.ImportDataBtn_Click);
+            // 
+            // zobrazitToolStripMenuItem
+            // 
+            this.zobrazitToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.neomluvenouAbsenciToolStripMenuItem});
+            this.zobrazitToolStripMenuItem.Name = "zobrazitToolStripMenuItem";
+            this.zobrazitToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.zobrazitToolStripMenuItem.Text = "Zobrazit";
+            // 
+            // neomluvenouAbsenciToolStripMenuItem
+            // 
+            this.neomluvenouAbsenciToolStripMenuItem.Name = "neomluvenouAbsenciToolStripMenuItem";
+            this.neomluvenouAbsenciToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.neomluvenouAbsenciToolStripMenuItem.Text = "Statistiky";
+            this.neomluvenouAbsenciToolStripMenuItem.Click += new System.EventHandler(this.ShowUnexcusedAbsenceBtnClick);
             // 
             // nápovědaToolStripMenuItem
             // 
@@ -161,6 +178,9 @@
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.ToolStripMenuItem neomluvenouAbsenciToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zobrazitToolStripMenuItem;
 
         private System.Windows.Forms.Button removeStudentBtn;
 
