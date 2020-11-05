@@ -20,10 +20,11 @@ namespace Dochazka {
 
         public OnPresenceChanged OnPresenceChangedAction;
 
-        private Dictionary<Student, ListViewItem> studentsInListView = new Dictionary<Student, ListViewItem>();
+        private Dictionary<Student, ListViewItem> studentsInListView;
 
         public Form1() {
             InitializeComponent();
+            studentsInListView = new Dictionary<Student, ListViewItem>();
             InitCallbacks();
             InitStudentsList();
             UpdateStudents();
@@ -66,15 +67,21 @@ namespace Dochazka {
 
             using (StudentDbContext db = new StudentDbContext()) {
                 foreach (ListViewItem item in studentsList.SelectedItems) {
-                    foreach (Student student in studentsInListView.Keys) {
-                        if (studentsInListView[student] == item) {
-                            student.Presences.ForEach(x => {
+                    Student student = null;
+                    studentsInListView.Keys.ToList().ForEach(x => {
+                        if (studentsInListView[x] == item) {
+                            student = x;
+                            return;
+                        }
+                    });
+                    if(student == null) return;
+                    db.Attach(student);
+                    db.Entry(student).Collection(x=>x.Presences).Load();
+                    student.Presences.ForEach(x => {
                                 db.Presences.Remove(x);
                             });
-                            db.Students.Remove(student);
-                            OnStudentRemovedAction.Invoke(student);
-                        }
-                    }
+                    db.Students.Remove(student);
+                    OnStudentRemovedAction.Invoke(student);
                 }
                 db.SaveChanges();
             }
