@@ -12,7 +12,7 @@ namespace Dochazka {
         private DateTime _dateTime;
         public Presence Presence { get; private set; }
         private Dictionary<string,PresenceType> presences = new Dictionary<string, PresenceType>();
-        public WriteAbsenceForm(Student student) {
+        public WriteAbsenceForm(Student student, DateTime date) {
             InitializeComponent();
             saveBtn.DialogResult = DialogResult.OK;
             _student = student;
@@ -24,7 +24,7 @@ namespace Dochazka {
             absenceTypeBox.Items.Add(PresenceTypeEnum.ToString(PresenceType.Excused));
             absenceTypeBox.SelectedIndex = first;
             studentsNameLabel.Text = student.Name;
-            
+            dateTimePicker1.Value = date;
         }
 
         private bool GetPresence() {

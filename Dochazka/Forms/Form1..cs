@@ -84,6 +84,13 @@ namespace Dochazka {
 
         private void studentsList_MouseDoubleClick(object sender, MouseEventArgs e) {
             Console.WriteLine("Click");
+            ListViewHitTestInfo hit = studentsList.HitTest(studentsList.PointToClient(Control.MousePosition));
+            int day = hit.Item.SubItems.IndexOf(hit.SubItem);
+            DateTime dt = DateTime.Now;
+            if (day != 0)
+            {
+                dt = new DateTime(DateTime.Now.Year, DateTime.Now.Month, day);
+            }
             ListViewItem studentItem = studentsList.FocusedItem;
             Student newStudent = null;
             foreach (Student student in studentsInListView.Keys) {
@@ -94,7 +101,7 @@ namespace Dochazka {
             }
 
             if (newStudent != null) {
-                WriteAbsenceForm writeAbsenceForm = new WriteAbsenceForm(newStudent);
+                WriteAbsenceForm writeAbsenceForm = new WriteAbsenceForm(newStudent, dt);
                 if (writeAbsenceForm.ShowDialog() == DialogResult.OK) {
                     OnPresenceChangedAction.Invoke(newStudent, writeAbsenceForm.Presence);
                 }
