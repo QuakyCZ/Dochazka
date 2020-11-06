@@ -23,7 +23,7 @@ namespace Dochazka {
         private PrintDocument PrepareDocument() {
             PrintDocument document = new PrintDocument();
             document.DocumentName = "Prezence";
-            document.DefaultPageSettings.Landscape = true;
+            //document.DefaultPageSettings.Landscape = true;
             document.PrintPage+= PrintPage;
             return document;
         }
@@ -33,7 +33,7 @@ namespace Dochazka {
         
         private void PrintPage(object sender, PrintPageEventArgs e) {
             using (Font header_font = new Font("Times New Roman",
-                15, FontStyle.Bold))
+                12, FontStyle.Bold))
             {
                 
                 using (Font body_font = new Font("Times New Roman", 11))
