@@ -10,7 +10,7 @@ namespace Dochazka {
         private PrintDocument _document;
         private Document pdfDocument;
 
-        private string[] Headers = {"Jméno", "P", "N", "O", "Celkem"};
+        private string[] Headers = {"Jméno", "Přítomen", "Nepřítomen", "Omluven", "Absence Celkem"};
         private void savePDFBtn_Click(object sender, EventArgs e) {
             
             SaveFileDialog dialog = new SaveFileDialog();
@@ -38,11 +38,11 @@ namespace Dochazka {
 
             PdfPTable table = new PdfPTable(5);
             for (int i = 0; i < Headers.Length; i++) {
-                table.AddCell(CreateParagraph(Headers[i], 12));
+                table.AddCell(CreateParagraph(Headers[i], 12, true));
             }
             foreach (string[] studentData in lines) {
                 for (int i = 0; i < studentData.Length; i++) {
-                    table.AddCell(studentData[i]);
+                    table.AddCell(CreateParagraph(studentData[i],11));
                 }
             }
 
@@ -50,9 +50,12 @@ namespace Dochazka {
             pdfDocument.Close();
         }
 
-        private Paragraph CreateParagraph(string content, float size) {
-            BaseFont font = BaseFont.CreateFont(BaseFont.TIMES_ROMAN,BaseFont.CP1252,false);
-            return new Paragraph(content,new iTextSharp.text.Font(font,size));
+        private Paragraph CreateParagraph(string content, float size, bool header = false) {
+            BaseFont font = BaseFont.CreateFont(BaseFont.TIMES_ROMAN,BaseFont.CP1250,false);
+            if (header) {
+                font = BaseFont.CreateFont(BaseFont.TIMES_BOLD,BaseFont.CP1250,false);
+            }
+            return new Paragraph(content,new Font(font,size));
         }
         
         private void CloseBtn_Click(object sender, EventArgs e) {
