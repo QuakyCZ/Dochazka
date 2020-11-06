@@ -8,8 +8,11 @@ using Dochazka.Utils.DatabaseEntities;
 namespace Dochazka {
     public partial class AbsencesForm : Form {
         private List<string[]> lines = new List<string[]>();
+        private DateTime _dateTime;
         public AbsencesForm() {
             InitializeComponent();
+            _dateTime = DateTime.Now;
+            
             InitTable();
             ShowValues();
         }
