@@ -17,8 +17,6 @@ namespace Dochazka {
             ShowValues();
         }
 
-        
-
         private void InitTable() {
             presenceList.Sorting = SortOrder.Ascending;
             presenceList.Columns.Add("Jméno", 200);
@@ -58,5 +56,7 @@ namespace Dochazka {
             });
             return count;
         }
+
+        
     }
 }

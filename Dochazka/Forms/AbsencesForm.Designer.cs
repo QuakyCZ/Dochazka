@@ -27,8 +27,8 @@ namespace Dochazka {
         /// </summary>
         private void InitializeComponent() {
             this.closeBtn = new System.Windows.Forms.Button();
-            this.printBtn = new System.Windows.Forms.Button();
             this.presenceList = new System.Windows.Forms.ListView();
+            this.savePDFBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // closeBtn
@@ -41,17 +41,6 @@ namespace Dochazka {
             this.closeBtn.Text = "Zavřít";
             this.closeBtn.UseVisualStyleBackColor = true;
             this.closeBtn.Click += new System.EventHandler(this.CloseBtn_Click);
-            // 
-            // printBtn
-            // 
-            this.printBtn.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.printBtn.Location = new System.Drawing.Point(697, 12);
-            this.printBtn.Name = "printBtn";
-            this.printBtn.Size = new System.Drawing.Size(93, 66);
-            this.printBtn.TabIndex = 2;
-            this.printBtn.Text = "Tisk";
-            this.printBtn.UseVisualStyleBackColor = true;
-            this.printBtn.Click += new System.EventHandler(this.PrintBtn_Click);
             // 
             // presenceList
             // 
@@ -67,13 +56,24 @@ namespace Dochazka {
             this.presenceList.UseCompatibleStateImageBehavior = false;
             this.presenceList.View = System.Windows.Forms.View.Details;
             // 
+            // savePDFBtn
+            // 
+            this.savePDFBtn.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.savePDFBtn.Location = new System.Drawing.Point(697, 12);
+            this.savePDFBtn.Name = "savePDFBtn";
+            this.savePDFBtn.Size = new System.Drawing.Size(93, 66);
+            this.savePDFBtn.TabIndex = 4;
+            this.savePDFBtn.Text = "Uložit PDF";
+            this.savePDFBtn.UseVisualStyleBackColor = true;
+            this.savePDFBtn.Click += new System.EventHandler(this.savePDFBtn_Click);
+            // 
             // AbsencesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(802, 489);
+            this.Controls.Add(this.savePDFBtn);
             this.Controls.Add(this.presenceList);
-            this.Controls.Add(this.printBtn);
             this.Controls.Add(this.closeBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AbsencesForm";
@@ -81,10 +81,11 @@ namespace Dochazka {
             this.ResumeLayout(false);
         }
 
+        private System.Windows.Forms.Button savePDFBtn;
+
         private System.Windows.Forms.ListView presenceList;
 
         private System.Windows.Forms.Button closeBtn;
-        private System.Windows.Forms.Button printBtn;
 
         #endregion
     }
