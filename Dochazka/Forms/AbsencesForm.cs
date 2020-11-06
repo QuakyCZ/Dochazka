@@ -9,9 +9,9 @@ namespace Dochazka {
     public partial class AbsencesForm : Form {
         private List<string[]> lines = new List<string[]>();
         private DateTime _dateTime;
-        public AbsencesForm() {
+        public AbsencesForm(DateTime dateTime) {
             InitializeComponent();
-            _dateTime = DateTime.Now;
+            _dateTime = dateTime;
             
             InitTable();
             ShowValues();
@@ -50,7 +50,7 @@ namespace Dochazka {
         private int GetPresenceCount(Student stundent, PresenceType type) {
             int count = 0;
             stundent.Presences.ForEach(x => {
-                if (x.Type.Equals(type)) {
+                if (x.Type.Equals(type) && x.Date.Month==_dateTime.Month && x.Date.Year == _dateTime.Year) {
                     count++;
                 }
             });

@@ -36,7 +36,7 @@ namespace Dochazka {
             this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.closeBtn.Location = new System.Drawing.Point(697, 84);
             this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(93, 66);
+            this.closeBtn.Size = new System.Drawing.Size(97, 66);
             this.closeBtn.TabIndex = 1;
             this.closeBtn.Text = "Zavřít";
             this.closeBtn.UseVisualStyleBackColor = true;
@@ -51,7 +51,7 @@ namespace Dochazka {
             this.presenceList.HideSelection = false;
             this.presenceList.Location = new System.Drawing.Point(12, 12);
             this.presenceList.Name = "presenceList";
-            this.presenceList.Size = new System.Drawing.Size(679, 465);
+            this.presenceList.Size = new System.Drawing.Size(679, 488);
             this.presenceList.TabIndex = 3;
             this.presenceList.UseCompatibleStateImageBehavior = false;
             this.presenceList.View = System.Windows.Forms.View.Details;
@@ -61,7 +61,7 @@ namespace Dochazka {
             this.savePDFBtn.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.savePDFBtn.Location = new System.Drawing.Point(697, 12);
             this.savePDFBtn.Name = "savePDFBtn";
-            this.savePDFBtn.Size = new System.Drawing.Size(93, 66);
+            this.savePDFBtn.Size = new System.Drawing.Size(97, 66);
             this.savePDFBtn.TabIndex = 4;
             this.savePDFBtn.Text = "Uložit PDF";
             this.savePDFBtn.UseVisualStyleBackColor = true;
@@ -71,7 +71,7 @@ namespace Dochazka {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(802, 489);
+            this.ClientSize = new System.Drawing.Size(806, 512);
             this.Controls.Add(this.savePDFBtn);
             this.Controls.Add(this.presenceList);
             this.Controls.Add(this.closeBtn);

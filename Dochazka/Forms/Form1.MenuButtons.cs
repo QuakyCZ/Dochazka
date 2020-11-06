@@ -38,7 +38,8 @@ namespace Dochazka {
         }
 
         private void ShowUnexcusedAbsenceBtnClick(object sender, EventArgs e) {
-            (new AbsencesForm()).Show();
+            AbsencesForm absencesForm = new AbsencesForm(listedDate);
+            absencesForm.Show();
         }
     }
 }
