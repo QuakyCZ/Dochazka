@@ -22,6 +22,7 @@ namespace Dochazka {
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             if (Directory.Exists(DBROOTFOLDER) == false) {
                 Directory.CreateDirectory(DBROOTFOLDER);
             }

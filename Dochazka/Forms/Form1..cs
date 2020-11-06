@@ -21,6 +21,7 @@ namespace Dochazka {
         public OnPresenceChanged OnPresenceChangedAction;
 
         private Dictionary<Student, ListViewItem> studentsInListView;
+        private Dictionary<int,int> dayIndexes = new Dictionary<int, int>();
 
         public Form1() {
             InitializeComponent();
@@ -37,9 +38,16 @@ namespace Dochazka {
         }
         private void InitStudentsList() {
             studentsList.Sorting = SortOrder.Ascending;
-            studentsList.Columns.Add("Jméno", 200);
-            for (int i = 1; i <= DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month); i++) {
-                studentsList.Columns.Add(i.ToString(), 50);
+            studentsList.Columns.Add("Jméno",200);
+            DateTime dateTimeNow = DateTime.Now;
+            int index = 1;
+            for (int i = 1; i <= DateTime.DaysInMonth(dateTimeNow.Year, dateTimeNow.Month); i++) {
+                DateTime date = new DateTime(dateTimeNow.Year,dateTimeNow.Month,i);
+                if (date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday) {
+                    studentsList.Columns.Add(i.ToString(), 30);
+                    dayIndexes.Add(index,i);
+                    index++;
+                }
             }
         }
 
@@ -50,11 +58,6 @@ namespace Dochazka {
         ///    FORM INTERACTIONS
         ///
         //////////////////////////////
-        
-
-       
-
-        
 
         private void UpdateStudents() {
             studentsList.Items.Clear();
@@ -85,7 +88,10 @@ namespace Dochazka {
         private void studentsList_MouseDoubleClick(object sender, MouseEventArgs e) {
             Console.WriteLine("Click");
             ListViewHitTestInfo hit = studentsList.HitTest(studentsList.PointToClient(Control.MousePosition));
-            int day = hit.Item.SubItems.IndexOf(hit.SubItem);
+            int day = 0;
+            if (hit.Item.SubItems.IndexOf(hit.SubItem) > 0) {
+                day = dayIndexes[hit.Item.SubItems.IndexOf(hit.SubItem)];
+            }
             DateTime dt = DateTime.Now;
             if (day != 0)
             {

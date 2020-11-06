@@ -29,6 +29,15 @@
         <SubType>Component</SubType>
         <DependentUpon>AbsencesForm.cs</DependentUpon>
       </Compile>
+      <Compile Update="Forms\Form1.Buttons.cs">
+        <DependentUpon>Form1..cs</DependentUpon>
+      </Compile>
+      <Compile Update="Forms\Form1.Callbacks.cs">
+        <DependentUpon>Form1..cs</DependentUpon>
+      </Compile>
+      <Compile Update="Forms\Form1.MenuButtons.cs">
+        <DependentUpon>Form1..cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>
