@@ -38,6 +38,7 @@ namespace Dochazka {
             InitCallbacks();
             InitStudentsList();
             UpdateStudents();
+            InitStudentColors();
             initialization = false;
         }
 
@@ -126,6 +127,20 @@ namespace Dochazka {
                 else {
                     item.BackColor = Color.White;
                 }
+            }
+        }
+
+        private void InitStudentColors()
+        {
+            List<string> studentText = new List<string>();
+            studentText.AddRange(studentsList.Items.Cast<ListViewItem>().Select(x => x.Text).ToList());
+            studentText.Sort();
+            for (int i = 0; i < studentText.Count; i++)
+            {
+                if (i % 2 == 0)
+                    studentsList.FindItemWithText(studentText[i]).BackColor = Color.Gainsboro;
+                else
+                    studentsList.FindItemWithText(studentText[i]).BackColor = Color.White;
             }
         }
         #region FORM INTERACTIONS
